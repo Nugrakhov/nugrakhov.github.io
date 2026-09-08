@@ -83,32 +83,3 @@ Hatono Haron Engine/
 ## ⚠️ Disclaimer
 
 Hiburan berbasis zodiak & angka acak deterministik — **bukan jaminan menang**. Bertaruhlah dengan bijak (20+), jangan melebihi kemampuan. Data racecard milik **netkeiba.com / umanity.jp**. Bracket JRA: 1 Putih, 2 Hitam, 3 Merah, 4 Biru, 5 Kuning, 6 Hijau, 7 Oranye, 8 Pink. Karakter Hatono Haron © **Stellaparade Co., Ltd. / Stella Lab**.
-
----
-
-## Short Description (untuk listing / sosmed)
-
-**ID:** *Hatono Haron Engine* — web ramalan tiket JRA dari zodiak harian. Rank 1–3 TRIO, 4–6 EXACTA, 7–9 Quinella, 10–12 Wide; warna bracket & nomor hoki personal, kombinasi + BOX 5 kuda, import racecard netkeiba/umanity (auto-fetch 10 jalur / tempel HTML), single-file siap HP. Hiburan, bukan jaminan menang. 20+.
-
-**EN:** *Hatono Haron Engine* — JRA fortune-telling for horse racing tickets based on your daily zodiac ranking. Ranks 1–3 TRIO, 4–6 EXACTA, 7–9 Quinella, 10–12 Wide; lucky bracket color & horse numbers, 3 combos + 5-horse BOX, netkeiba/umanity racecard import (10-route auto-fetch / paste-HTML fallback), single-file mobile build. For entertainment only. 20+.
-
-### Caption Ultra-Pendek (siap copy-paste)
-
-**X / Threads (≤280 char) — ID (275 char):**
-> Hatono Haron Engine 🎲🐴 Ramalan tiket JRA dari zodiak harian — TRIO/EXACTA/Quinella/Wide, warna waku & nomor hoki, BOX 5 kuda. Import netkeiba/umanity, 1 file siap HP. Hiburan, bukan jaminan menang. 20+ #JRA #Keiba
-
-**X / Threads (≤280 char) — EN (268 char):**
-> Hatono Haron Engine 🎲🐴 JRA ticket fortune from your daily zodiac — TRIO/EXACTA/Quinella/Wide, lucky waku & numbers, 5-horse BOX. netkeiba/umanity import, single-file mobile build. For fun only, not a guarantee. 20+ #JRA #Keiba
-
-**Instagram Bio / Tagline — ID (≤150 char, 138 char):**
-> Ramalan tiket JRA dari zodiak harian 🎲 TRIO·EXACTA·Quinella·Wide + BOX 5 kuda. netkeiba/umanity → 1 file siap HP. Hiburan 20+
-
-**Instagram Bio / Tagline — EN (≤150 char, 132 char):**
-> JRA ticket fortune from your zodiac 🎲 TRIO·EXACTA·Quinella·Wide + 5-horse BOX. netkeiba/umanity → single file. For fun 20+
-
-**Satu baris — ID (68 char):**
-> Hatono Haron Engine — ramalan tiket JRA dari zodiak harian. Hiburan 20+.
-
-**Satu baris — EN (65 char):**
-> Hatono Haron Engine — JRA ticket fortune from your zodiac. For fun 20+.
-
