@@ -35,51 +35,6 @@
 3. **Jenis tiket** dipilih dari rank (`ticketForRank`).
 4. **Kombinasi** diracik: nomor lucky sebagai jangkar + kuda dari waku lucky + pelengkap acak seeded dari daftar kuda racecard.
 
-## 🚀 Cara Pakai
-
-### Versi web (development)
-Buka `index.html` langsung di browser (atau `npx serve .`).
-
-1. Isi **Tanggal lahir** dan **Tanggal race day** (terisi otomatis dari racecard bila ada).
-2. Tempel **URL racecard** (`https://en.netkeiba.com/race/shutuba.html?race_id=...` atau `https://umanity.jp/.../race_*.php?code=...`) → klik **Ambil Data**.
-   - Jika diblokir CORS/WAF, gunakan **Fallback: tempel HTML** atau jalankan proxy lokal:
-     ```bash
-     node proxy.js   # http://localhost:8080
-     ```
-3. Atau klik **Muat Contoh Race (12 kuda)** / isi tabel manual.
-4. Klik **Lihat Ramalanku** → hasil, kombinasi, BOX, dan peta waku muncul.
-5. **Salin Tiket** / **Salin BOX** untuk share.
-
-### Versi single-file (HP)
-Buka `hatono-haron.html` — 1 file, offline kecuali auto-fetch. Kirim via WA/Telegram/USB, buka di Chrome/Safari, *Add to Home Screen* untuk akses seperti aplikasi.
-
-Regenerate setelah edit source:
-```bash
-python scratch/build-single.py
-```
-
-## 🛠️ Teknologi
-
-- **Vanilla HTML/CSS/JS** — tanpa framework, tanpa build step.
-- Parser DOM (`DOMParser`) untuk netkeiba & umanity, parser markdown untuk Jina Reader.
-- Seeded RNG (`mulberry32` + `xmur3`-style hash) untuk ranking & kombinasi yang reproduksibel.
-- Proxy CORS lokal Node.js (`proxy.js`, stdlib `http`/`https` saja).
-
-## 📁 Struktur
-
-```
-Hatono Haron Engine/
-├── index.html          # Entry point (dev, multi-file)
-├── styles.css          # Professional dark theme
-├── app.js              # Engine: zodiak, ranking, fetch, parser, kombinasi, render
-├── proxy.js            # CORS proxy lokal (node proxy.js)
-├── logo.jpg            # Logo banner 3254×1312
-├── logo-small.jpg      # Logo terkompresi untuk build single-file
-├── hatono-haron.html   # Build single-file HP (generated)
-└── scratch/
-    └── build-single.py # Script build: gabung HTML+CSS+JS+logo → hatono-haron.html
-```
-
 ## ⚠️ Disclaimer
 
 Hiburan berbasis zodiak & angka acak deterministik — **bukan jaminan menang**. Bertaruhlah dengan bijak (20+), jangan melebihi kemampuan. Data racecard milik **netkeiba.com / umanity.jp**. Bracket JRA: 1 Putih, 2 Hitam, 3 Merah, 4 Biru, 5 Kuning, 6 Hijau, 7 Oranye, 8 Pink. Karakter Hatono Haron © **Stellaparade Co., Ltd. / Stella Lab**.
