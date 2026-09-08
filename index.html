@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hatono Haron — Ramalan Pacuan Kuda JRA x Zodiak Harian</title>
+  <meta name="description"
+    content="Ramalan tiket pacuan kuda JRA berdasarkan zodiak harian: TRIO, EXACTA, Quinella dan Quinella Place dari warna bracket dan nomor keberuntungan Anda.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Serif+JP:wght@600;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="icon" type="image/jpeg" href="./logo.jpg">
+</head>
+
+<body>
+  <div class="bg-orbs" aria-hidden="true"><span class="orb orb-a"></span><span class="orb orb-b"></span><span
+      class="orb orb-c"></span></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <img class="brand-logo" src="./logo.jpg" alt="Logo Hatono Haron">
+      <div>
+        <p class="brand-name">HATONO HARON</p>
+        <p class="brand-sub">JRA x Zodiak Harian</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="pill" id="raceDayPill">Race Day —</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="kicker">JRA Fortune Racing · Zodiak Harian</p>
+      <h1>Ramalan Tiket <span class="gold">Pacuan Kuda JRA</span></h1>
+      <p class="lede">Masukkan tanggal lahir dan racecard untuk meracik <strong>jenis tiket</strong> berdasarkan peringkat zodiak, <strong>warna bracket</strong> keberuntungan, dan <strong>nomor kuda</strong> hoki Anda.</p>
+      <div class="rule-chips">
+        <span class="chip">Rank 1-3 → <b>TRIO</b></span>
+        <span class="chip">Rank 4-6 → <b>EXACTA</b></span>
+        <span class="chip">Rank 7-9 → <b>Quinella</b></span>
+        <span class="chip">Rank 10-12 → <b>Quinella Place</b></span>
+      </div>
+    </section>
+
+    <section class="card input-card" id="inputCard">
+      <h2>Data Peramal dan Lomba</h2>
+      <div class="grid-2">
+        <div class="field">
+          <label for="birthdate">Tanggal lahir</label>
+          <input type="date" id="birthdate" value="1995-04-15">
+          <small>Menentukan zodiak, warna dan nomor keberuntungan.</small>
+        </div>
+        <div class="field">
+          <label for="raceDate">Tanggal race day</label>
+          <input type="date" id="raceDate">
+          <small>Peringkat zodiak harian dihitung per tanggal ini.</small>
+        </div>
+      </div>
+      <div class="field">
+        <label for="raceUrl">URL Racecard (netkeiba / umanity)</label>
+        <div class="url-row">
+          <input type="url" id="raceUrl" placeholder="https://en.netkeiba.com/race/shutuba.html?race_id=202609040211">
+          <button class="btn ghost" id="btnFetch" type="button">Ambil Data</button>
+        </div>
+        <small>Contoh: netkeiba shutuba.html?race_id=... atau umanity race_8.php?code=... Jika tombol Ambil Data gagal
+          (umum: CORS/anti-bot), gunakan panel tempel HTML di bawah — dijamin bisa.</small>
+      </div>
+      <div class="field">
+        <label for="pasteHtml">Fallback: tempel HTML halaman racecard</label>
+        <small>Cara: buka halaman racecard → tekan Ctrl+U (view source) → Ctrl+A, Ctrl+C → tempel ke sini → klik Parse
+          HTML. Bisa juga dari hasil Save Page (Ctrl+S → buka .html dengan notepad → copy).</small>
+        <textarea id="pasteHtml" rows="4"
+          placeholder="Tempel seluruh HTML sumber halaman shutuba / race di sini…"></textarea>
+        <div class="btn-row" style="margin-top:10px">
+          <button class="btn ghost" id="btnParsePaste" type="button">Parse HTML Tempelan</button>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn primary" id="btnFortune" type="button">Lihat Ramalanku</button>
+        <button class="btn ghost" id="btnSample" type="button">Muat Contoh Race (12 kuda)</button>
+      </div>
+      <p class="fetch-status" id="fetchStatus" role="status"></p>
+    </section>
+
+    <section class="card" id="raceCardSection">
+      <div class="section-head">
+        <h2>Racecard — Daftar Kuda</h2>
+        <div class="btn-row small">
+          <button class="btn ghost" id="btnAddHorse" type="button">+ Tambah Kuda</button>
+          <button class="btn ghost" id="btnClear" type="button">Bersihkan</button>
+        </div>
+      </div>
+      <p class="race-meta" id="raceMeta">Belum ada data lomba. Muat contoh atau isi manual.</p>
+      <div class="table-wrap">
+        <table id="horseTable">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Waku</th>
+              <th>Nama Kuda</th>
+              <th>Joki</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="horseBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="resultSection" hidden>
+      <div class="card result-hero">
+        <div class="zodiac-emblem" id="zodiacEmblem">?</div>
+        <div class="result-head">
+          <p class="kicker" id="resDateLine">—</p>
+          <h2 id="resTitle">Ramalan —</h2>
+          <div class="rank-line">
+            <span class="rank-badge" id="rankBadge">#–</span>
+            <span id="rankText">Peringkat zodiak harian –</span>
+          </div>
+        </div>
+        <div class="ticket-box">
+          <p class="ticket-label">TIKET REKOMENDASI</p>
+          <p class="ticket-type" id="ticketType">—</p>
+          <p class="ticket-jp" id="ticketJp">—</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="card mini">
+          <h3>Warna Keberuntungan</h3>
+          <div class="color-dot" id="luckyColorDot"></div>
+          <p id="luckyColorText">—</p>
+        </div>
+        <div class="card mini">
+          <h3>Nomor Keberuntungan</h3>
+          <p class="big-number" id="luckyNumberText">—</p>
+          <p id="luckyNumberSub">—</p>
+        </div>
+        <div class="card mini">
+          <h3>Narasi Bintang</h3>
+          <p id="narrativeText">—</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Kombinasi Tiket</h2>
+        <div id="comboList" class="combo-list"></div>
+        <div class="btn-row">
+          <button class="btn primary" id="btnCopy" type="button">Salin Tiket</button>
+          <button class="btn ghost" id="btnReroll" type="button">Acak Variasi Lain</button>
+        </div>
+      </div>
+
+      <div class="card box-card">
+        <div class="section-head">
+          <h2>Varian BOX — Maks 5 Kuda</h2>
+          <span class="pill" id="boxTitle">—</span>
+        </div>
+        <p class="race-meta" id="boxInfo">—</p>
+        <div class="box-members" id="boxMembers"></div>
+        <p class="box-subhead" id="boxSubHead">—</p>
+        <div class="box-subgrid" id="boxSubGrid"></div>
+        <div class="btn-row">
+          <button class="btn primary" id="btnCopyBox" type="button">Salin BOX</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Peta Bracket (Waku)</h2>
+        <div class="waku-grid" id="wakuGrid"></div>
+      </div>
+    </section>
+
+    <footer>
+      <p><strong>Gunakan dengan bijak (20+).</strong> Ramalan ini hiburan berbasis zodiak — bukan jaminan menang.</p>
+      <p class="foot-small">Hatono Haron · Stella Lab · © Stellaparade Co., Ltd. · Data: netkeiba.com / umanity.jp · Bracket JRA: 1 Putih, 2 Hitam, 3 Merah, 4 Biru, 5 Kuning, 6 Hijau, 7 Oranye, 8 Pink</p>
+    </footer>
+  </main>
+  <script src="./app.js"></script>
+</body>
+
+</html>

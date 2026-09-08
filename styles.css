@@ -1,0 +1,166 @@
+/* Hatono Haron — Professional Dark Theme. Clean, minimal, modern. */
+:root{
+  --bg:#0a0d14; --bg2:#111520; --band:#080a10;
+  --card:#131720; --card2:#181d28;
+  --ink:#e4e8f0; --mut:#6b7288; --faint:#404660;
+  --line:#1c2130; --line-light:#262d3e;
+  --accent:#5b6cf0; --accent-soft:#454fcc; --accent-bg:rgba(91,108,240,.08);
+  --gold:#d4a62a; --gold-mut:#8a7018; --gold-bg:rgba(212,166,42,.07);
+  --radius:10px; --radius-sm:6px; --radius-lg:14px;
+  --font:'Outfit',system-ui,-apple-system,sans-serif; --serif:'Noto Serif JP',serif;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.45); --shadow-md:0 4px 12px rgba(0,0,0,.5);
+  --transition:.18s ease;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);min-height:100vh;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.bg-orbs{display:none}
+main,header.topbar,footer{position:relative;z-index:1}
+
+/* ── topbar ── */
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:10px 24px;
+  background:var(--band);border-bottom:1px solid var(--line)}
+.brand{display:flex;gap:10px;align-items:center}
+.brand-mark{display:none}
+.brand-logo{height:36px;width:auto;aspect-ratio:3254/1312;object-fit:contain;border-radius:6px;background:var(--card);padding:2px 8px}
+.brand-name{margin:0;font-weight:700;font-size:15px;letter-spacing:1.5px;color:#fff}
+.brand-sub{margin:0;color:var(--mut);font-size:11px;letter-spacing:1px}
+.pill{border:1px solid var(--line-light);border-radius:999px;padding:5px 14px;background:var(--card);color:var(--mut);font-size:12px;font-weight:500}
+
+/* ── layout ── */
+main{max-width:960px;margin:0 auto;padding:0 20px 60px}
+
+/* ── hero ── */
+.hero{text-align:center;padding:52px 0 20px}
+.kicker{color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-size:11px;margin:0 0 10px;font-weight:600}
+.hero h1{font-size:clamp(26px,4.5vw,40px);margin:0 0 10px;line-height:1.2;color:#fff;font-weight:700;letter-spacing:-.3px}
+.hero h1 .gold{color:var(--gold)}
+.lede{color:var(--mut);max-width:600px;margin:0 auto 20px;line-height:1.65;font-size:14px}
+.rule-chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.chip{border:1px solid var(--line);background:var(--card);padding:6px 12px;border-radius:999px;font-size:11px;color:var(--mut);font-weight:500}
+.chip b{color:var(--gold);font-weight:700}
+
+/* ── cards ── */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:22px 24px;margin-top:16px}
+.card h2{margin:0 0 12px;font-size:17px;font-weight:700;color:#fff}
+.card h3{margin:0 0 8px;font-size:13px;color:var(--mut);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+@media(max-width:760px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+/* ── fields ── */
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12px;font-weight:600;margin-bottom:6px;color:var(--mut);letter-spacing:.3px;text-transform:uppercase}
+.field input{width:100%;padding:10px 13px;border-radius:var(--radius-sm);border:1px solid var(--line-light);background:var(--bg2);color:var(--ink);font-family:var(--font);font-size:14px;transition:border-color var(--transition)}
+.field input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-bg)}
+.field textarea{width:100%;padding:10px 13px;border-radius:var(--radius-sm);border:1px solid var(--line-light);background:var(--bg2);color:var(--ink);font-family:'SF Mono','Cascadia Code',Consolas,monospace;font-size:12px;resize:vertical;transition:border-color var(--transition)}
+.field textarea:focus{outline:none;border-color:var(--accent)}
+.field small{color:var(--faint);font-size:11px;display:block;margin-top:5px;line-height:1.5}
+.field code{color:var(--gold)}
+.url-row{display:flex;gap:8px}
+.url-row input{flex:1}
+
+/* ── buttons ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:var(--radius);padding:10px 18px;font-family:var(--font);font-weight:600;font-size:13px;cursor:pointer;transition:all var(--transition);border:1px solid transparent;letter-spacing:.2px;gap:6px;white-space:nowrap}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 2px 8px rgba(91,108,240,.25)}
+.btn.primary:hover{background:var(--accent-soft);border-color:var(--accent-soft);box-shadow:0 4px 14px rgba(91,108,240,.35);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--mut);border-color:var(--line-light)}
+.btn.ghost:hover{background:var(--accent-bg);border-color:var(--accent);color:var(--accent)}
+.btn.danger{background:transparent;color:#f87171;border-color:transparent}
+.btn.danger:hover{background:rgba(248,113,113,.08);border-color:rgba(248,113,113,.2)}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.btn-row.small .btn{padding:6px 11px;font-size:11px}
+.fetch-status{font-size:12px;color:var(--accent);min-height:18px;margin:8px 0 0;font-weight:500}
+
+/* ── section head ── */
+.section-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.section-head h2{margin:0}
+.section-head .pill{background:var(--accent-bg);border-color:var(--accent);color:var(--accent)}
+.race-meta{color:var(--faint);font-size:12px}
+
+/* ── table ── */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--bg2)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;color:var(--faint);font-size:11px;text-transform:uppercase;letter-spacing:.8px;padding:9px 12px;border-bottom:1px solid var(--line);font-weight:600}
+td{padding:7px 12px;border-bottom:1px solid var(--line);color:var(--ink)}
+tr:last-child td{border-bottom:none}
+td input{width:100%;padding:6px 9px;border-radius:var(--radius-sm);border:1px solid var(--line-light);background:var(--bg);color:var(--ink);font-family:var(--font);font-size:13px;transition:border-color var(--transition)}
+td input:focus{outline:none;border-color:var(--accent)}
+td input.num{width:54px;text-align:center}
+.waku-tag{display:inline-block;min-width:26px;text-align:center;padding:2px 6px;border-radius:4px;font-weight:700;font-size:11px;color:#fff}
+.del-btn{background:none;border:none;color:var(--faint);cursor:pointer;font-size:14px;padding:2px 5px;border-radius:4px;transition:all var(--transition)}
+.del-btn:hover{color:#f87171;background:rgba(248,113,113,.06)}
+
+/* ── result hero ── */
+.result-hero{background:linear-gradient(135deg,var(--band),var(--card));border:1px solid var(--line);border-radius:var(--radius-lg);display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;padding:22px 24px;margin-top:16px}
+.result-hero h2{color:#fff;font-size:20px;margin:0 0 4px;font-weight:700}
+.result-hero h2::before{display:none}
+.zodiac-emblem{width:90px;height:90px;border-radius:50%;display:grid;place-items:center;font-size:44px;background:linear-gradient(135deg,var(--accent-soft),var(--accent));border:2px solid rgba(255,255,255,.06);color:#fff;box-shadow:0 0 0 3px var(--gold-bg)}
+.result-head .kicker{color:var(--gold);margin-bottom:2px;font-size:11px}
+.rank-line{display:flex;align-items:center;gap:8px;color:var(--mut);font-size:13px}
+.rank-badge{background:var(--gold);color:#0a0d14;font-weight:700;border-radius:999px;padding:4px 12px;font-size:12px}
+
+/* ── ticket box ── */
+.ticket-box{grid-column:1/-1;text-align:center;border:1px solid var(--gold-bg);border-radius:var(--radius);padding:16px;background:var(--gold-bg)}
+.ticket-box::before,.ticket-box::after{display:none}
+.ticket-label{margin:0;font-size:10px;letter-spacing:2.5px;color:var(--faint);text-transform:uppercase}
+.ticket-type{margin:2px 0 0;font-size:clamp(22px,3.5vw,34px);font-weight:800;letter-spacing:.5px;color:#fff;font-family:var(--serif)}
+.ticket-jp{margin:2px 0 0;color:var(--gold);font-family:var(--serif);font-size:13px}
+
+/* ── mini cards ── */
+.big-number{font-size:44px;font-weight:800;margin:0;color:var(--accent)}
+.color-dot{width:44px;height:44px;border-radius:50%;border:2px solid var(--line-light);margin-bottom:6px}
+.mini p{color:var(--mut);font-size:13px;line-height:1.6;margin:0}
+
+/* ── combo list ── */
+.combo-list{display:grid;gap:6px;margin-bottom:14px}
+.combo{border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;background:var(--card2);display:flex;gap:12px;align-items:center;animation:pop .25s ease;transition:border-color var(--transition)}
+.combo:hover{border-color:var(--accent)}
+@keyframes pop{from{transform:translateY(4px);opacity:0}}
+.combo-num{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;font-weight:700;background:var(--accent);color:#fff;flex-shrink:0;font-size:13px}
+.combo-main{flex:1;min-width:0}
+.combo-horses{font-weight:700;font-size:14px;color:var(--ink)}
+.combo-sub{color:var(--faint);font-size:11px;margin-top:2px;line-height:1.5}
+.combo-copy{background:var(--gold-bg);border:1px solid rgba(212,166,42,.2);color:var(--gold);border-radius:var(--radius-sm);padding:5px 10px;cursor:pointer;font-size:11px;font-weight:600;transition:all var(--transition);flex-shrink:0}
+.combo-copy:hover{background:rgba(212,166,42,.14)}
+
+/* ── waku grid ── */
+.waku-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:6px}
+.waku-cell{border:1px solid var(--line);border-left-width:4px;border-radius:var(--radius);padding:9px 11px;background:var(--card2);font-size:12px;color:var(--ink);transition:background var(--transition)}
+.waku-cell:hover{background:var(--bg2)}
+.waku-cell b{display:block;font-size:13px;margin-bottom:1px}
+.waku-cell.lucky{border-color:var(--gold);background:var(--gold-bg)}
+
+/* ── box card ── */
+.box-card{border-color:rgba(212,166,42,.12);background:var(--card2)}
+.box-members{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.box-chip{display:flex;align-items:center;gap:7px;border:1px solid var(--line-light);background:var(--card);border-radius:999px;padding:6px 11px;font-weight:600;color:var(--ink);font-size:12px;transition:border-color var(--transition)}
+.box-chip:hover{border-color:var(--accent)}
+.box-chip .mini-waku{font-size:10px;font-weight:700;color:#fff;border-radius:3px;padding:1px 5px}
+.box-chip small{color:var(--faint);font-weight:400}
+.box-cost{margin-left:auto;color:var(--gold);font-weight:700;font-size:12px}
+.box-subhead{color:var(--faint);font-size:12px;margin:10px 0 6px;line-height:1.5}
+.box-subhead b{color:var(--ink)}
+.box-subgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:5px;margin-bottom:12px}
+.box-sub{border:1px solid var(--line);border-radius:var(--radius-sm);padding:6px 9px;font-size:12px;background:var(--card);text-align:center;color:var(--ink);transition:border-color var(--transition)}
+.box-sub:hover{border-color:var(--accent)}
+.box-sub b{color:var(--accent)}
+
+/* ── footer ── */
+footer{margin-top:40px;padding:20px 0;text-align:center;color:var(--faint);font-size:12px;line-height:1.7;border-top:1px solid var(--line)}
+.foot-small{font-size:10px;color:var(--faint);opacity:.6;margin-top:6px}
+
+/* ── mobile ── */
+@media(max-width:760px){
+  main{padding:0 12px 48px}
+  .hero{padding:36px 0 14px}
+  .url-row{flex-direction:column}
+  .url-row .btn{width:100%}
+  .btn-row .btn{flex:1 1 auto;min-height:44px}
+  .combo{flex-wrap:wrap}
+  .combo-copy{width:100%;padding:8px}
+  .result-hero{grid-template-columns:1fr;text-align:center;justify-items:center}
+  table{font-size:12px}
+  td{padding:5px 8px}
+  .box-subgrid{grid-template-columns:repeat(2,1fr)}
+}
